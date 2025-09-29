@@ -99,7 +99,9 @@ export default function FHIRComponent() {
           {/* Patient Info */}
           {patient && (
             <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-              <h3 className="text-lg font-semibold text-green-800 mb-4">Patient Information</h3>
+              <h3 className="text-lg font-semibold text-green-800 mb-4 flex items-center">
+                Patient Information
+              </h3>
               <div className="grid md:grid-cols-3 gap-4">
                 <div>
                   <p className="text-sm text-green-600">Name</p>
@@ -134,7 +136,13 @@ export default function FHIRComponent() {
           {/* Condition Info */}
           {condition && (
             <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
-              <h3 className="text-lg font-semibold text-orange-800 mb-4">Medical Condition</h3>
+              <h3 className="text-lg font-semibold text-orange-800 mb-4 flex items-center">
+                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                </svg>
+                Medical Condition
+              </h3>
+
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
                   <p className="text-sm text-orange-600">Condition</p>
@@ -157,6 +165,38 @@ export default function FHIRComponent() {
                   <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">
                     {condition.severity?.coding?.[0]?.display || "Not specified"}
                   </span>
+                </div>
+              </div>
+
+              <div className="mt-4">
+                <p className="text-sm text-orange-600 mb-2">Medical Codes</p>
+                <div className="space-y-2">
+                  {condition.code?.coding?.map((coding: any, index: number) => (
+                    <div key={index} className="flex items-center justify-between bg-white p-2 rounded border">
+                      <span className="font-mono text-sm text-gray-800">{coding.code}</span>
+                      <span className="text-xs text-gray-500">
+                        {coding.system?.includes("icd") ? "ICD-11" : "ICD-11-TM2"}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {condition.note?.[0]?.text && (
+                <div className="mt-4">
+                  <p className="text-sm text-orange-600">Clinical Notes</p>
+                  <p className="bg-white p-3 rounded border text-gray-700">{condition.note[0].text}</p>
+                </div>
+              )}
+
+              <div className="mt-4 grid md:grid-cols-2 gap-4">
+                <div>
+                  <p className="text-sm text-orange-600">Onset Date</p>
+                  <p className="font-medium text-gray-600">{new Date(condition.onsetDateTime).toLocaleDateString()}</p>
+                </div>
+                <div>
+                  <p className="text-sm text-orange-600">Recorded Date</p>
+                  <p className="font-medium text-gray-600">{new Date(condition.recordedDate).toLocaleDateString()}</p>
                 </div>
               </div>
             </div>
