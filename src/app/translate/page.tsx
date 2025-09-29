@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { diseases } from "@/data/diseases";
+import Navbar from "../../../context/Navbar";
 
 // Define the Disease type based on your data structure
 type Disease = {
@@ -126,7 +127,6 @@ export default function TranslatePage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
-      {/* Navigation Bar */}
       <div className="navbar px-8 py-3 bg-gradient-to-r from-blue-600 to-green-600 text-white font-medium text-lg">
         <div className="navbar-start">
           <div className="dropdown">
@@ -173,7 +173,7 @@ export default function TranslatePage() {
             </ul>
           </div>
           <Link href="/" className="btn btn-ghost text-xl">
-            TeamIterative
+            NavaSetu
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
@@ -186,6 +186,9 @@ export default function TranslatePage() {
             </li>
             <li>
               <Link href="/documentation">Documentation</Link>
+            </li>
+            <li>
+              <Link href="/analytics">Analytics</Link>
             </li>
           </ul>
         </div>

@@ -32,30 +32,44 @@ export default function Navbar() {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
             <li>
-              <Link href="/" className="text-gray-700">{t('Demo')}</Link>
+              <Link href="/" className="text-gray-700">
+                {t("Demo")}
+              </Link>
             </li>
             <li>
-              <Link href="/translate" className="text-gray-700">Translate</Link>
+              <Link href="/translate" className="text-gray-700">
+                Translate
+              </Link>
             </li>
             <li>
-              <Link href="/documentation" className="text-gray-700">{t('Documentation')}</Link>
+              <Link href="/documentation" className="text-gray-700">
+                {t("Documentation")}
+              </Link>
+            </li>
+            <li>
+              <Link href="/analytics" className="text-gray-700">
+                {t("Analytics")}
+              </Link>
             </li>
           </ul>
         </div>
         <Link href="/" className="btn btn-ghost text-xl">
-          {t('NavaSetu')}
+          {t("NavaSetu")}
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <Link href="/">{t('Demo')}</Link>
+            <Link href="/">{t("Demo")}</Link>
           </li>
           <li>
-            <Link href="/translate">{t('Translate')}</Link>
+            <Link href="/translate">{t("Translate")}</Link>
           </li>
           <li>
-            <Link href="/documentation">{t('Documentation')}</Link>
+            <Link href="/documentation">{t("Documentation")}</Link>
+          </li>
+          <li>
+            <Link href="/analytics">Analytics</Link>
           </li>
         </ul>
       </div>

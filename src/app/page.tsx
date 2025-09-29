@@ -2,11 +2,9 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import { diseases } from "@/data/diseases";
 import Navbar from "../../context/Navbar";
 
-import SimpleLanguageSwitcher from "../../context/SimpleLanguageSwitcher";
 import { usePreTranslation } from "../../context/PreTranslatedContext";
 
 // Define the Disease type based on your data structure
